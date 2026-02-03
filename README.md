@@ -1,9 +1,7 @@
 # Data Analysis: Kimia Farma Sales Performance (Big Data)
 ## Project Overview
 
-This project focuses on analyzing the sales data and operational performance of Kimia Farma, a leading pharmaceutical company in Indonesia. Using SQL (BigQuery/PostgreSQL), I integrated multiple datasets—including sales transactions, inventory, and branch locations—to create a unified table for business intelligence reporting.
-
-The primary goal was to calculate key performance indicators (KPIs) like profit margins, branch ratings, and sales trends to support data-driven decision-making.
+This project focuses on analyzing the sales data and operational performance of Kimia Farma, a leading pharmaceutical company in Indonesia. Using SQL (BigQuery), I integrated multiple datasets—including sales transactions, inventory, and branch locations—to create a unified table for business intelligence reporting. The primary goal was to calculate key performance indicators (KPIs) like profit margins, branch ratings, and sales trends to support data-driven decision-making.
 
 ## Data Schema
 The analysis involves four main tables:
@@ -35,6 +33,16 @@ The analysis involves four main tables:
 4. kf_product -> Table containing information about the product
 - product_id: Foreign key identifying the specific product sold (String).
 - product_name: The official name of the product (String).
-- product_category: each product category (String).
+- product_category: category classification of each product (String).
 
+## Key Metrics and Business Logic
+In this project, I implementend some additional calculated field to derive deeper insights.
 
+1. Gross Profit Margin: Calculated based on the price tiering:
+   - Price $\le$ 50k: 10% margin
+   - 50k < Price $\le$ 100k: 15% margin
+   - 100k < Price $\le$ 300k: 20% margin
+   - 300k < Price $\le$ 500k: 25% margin
+   - Price > 500k: 30% margin
+2. Nett Profit: Price x (1 - Discount Percentage)
+3. Nett Sales: Price x Gross Profit Margin
